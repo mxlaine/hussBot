@@ -1,10 +1,15 @@
 import discord
 import os
 from dotenv import load_dotenv
-
-client = discord.Client(intents=discord.Intents.default())
 load_dotenv()
+
+myIntents = discord.Intents.default()
+myIntents.message_content = True
+myIntents.messages = True
+
+client = discord.Client(intents=myIntents)
 token = os.getenv("DISCORD_TOKEN")
+allowedTextChannels = [855758948166533120, 604272237607911457] # #hutseinchat, test
 
 @client.event
 async def on_ready():
@@ -13,9 +18,12 @@ async def on_ready():
 
 @client.event
 async def on_message(message: discord.Message):
-    if message.author == client.user or message.channel.id != 855758948166533120:
+    if message.channel.id not in allowedTextChannels:
         return
-    await message.add_reaction("\U0001F7E5")
 
+    if "meow" in message.content and message.author != client.user:
+        await message.channel.send("mamal juthana")
+
+    await message.add_reaction("\U0001F7E5")
 
 client.run(token)
