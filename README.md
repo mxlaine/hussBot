@@ -26,11 +26,35 @@ It integrates with the [HenrikDev Valorant API](https://docs.henrikdev.xyz/) to 
 
 Follow these steps to set up and run HussBot locally:
 
-### 1️⃣ Clone the repository
+### 1. Clone the repository
+
 ```bash
 git clone https://github.com/mxlaine/hussBot.git
 cd HussBot
-´´´
-### 2️⃣ Install dependencies
+```
 
-### 
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Create config.json in root
+```json
+{
+  "token"="your_discord_bot_token",
+  "api-key"="your_henrik_dev_api_key",
+  "guild-id"="your_discord_server_id",
+  "client-id"="your_discord_bot_client_id"
+}
+```
+
+### 4. Deploy commands and run!
+```bash
+npm src/deploy.js
+npm src/
+```
+
+### 5. Invite HussBot to your server
+
+Use your bot’s OAuth2 URL (from the Discord Developer Portal) to invite it to your server.
+Once it’s online, you’re ready to go!
